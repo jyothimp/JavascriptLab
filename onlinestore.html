@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+</head>
+<body>
+    <h2>Total Sales</h2>
+    <p id="total"></p>
+    <script>
+        var tshirtSold = 5;// Number of T-shirts sold
+        var capSold = 3;// Number of Caps sold
+        var tshirtPrice = 400;// Price of one T-shirt
+        var capPrice = 150;// Price of one Cap
+        var totalRevenue = (tshirtSold * tshirtPrice) + (capSold * capPrice);// Calculate total revenue
+        tshirtPrice = 450;// Updated price of T-shirt
+        var updatedRevenue = (tshirtSold * tshirtPrice) + (capSold * capPrice);// Calculate updated revenue
+        document.getElementById("total").innerHTML="Total Revenue: ₹ " + totalRevenue + "<br>Updated Revenue: ₹ " + updatedRevenue;
+    </script>
+</body>
+</html> 
