@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+</head>
+<body>
+    <h1>Feedback Form</h1>
+    <p id="feed">I loved the FOOD and the service!</p>
+<button onclick="feedBack()">Send Your Feedback!!</button>
+<script>
+function feedBack() {
+    var feedback = "   I loved the FOOD and the service!   ";
+    var trimmed = feedback.trim(); //  Remove extra spaces 
+    var lower = trimmed.toLowerCase();  //  Convert to lowercase 
+    var replaced = lower.replace("food", "ambience"); //  Replace food with ambience
+    var position = replaced.indexOf("service");  // Find position of "service"   
+    var wordsArray = replaced.split(" "); //  Convert to array of words
+    document.getElementById("feed").innerHTML =
+        "Processed Text: " + replaced + "<br><br>" +
+        "Position of 'service': " + position + "<br><br>" +
+        "Words Array: " + wordsArray;
+}
+</script>
+</body>
+</html>
