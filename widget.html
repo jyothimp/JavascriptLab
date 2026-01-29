@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Widget </title>
+</head>
+<body>
+    <h2>Statistics Widget</h2>
+     <p id="random"></p>
+    <p id="userScore"></p>
+    <p id="diff"></p>
+    <p id="sqrt"></p>
+    <p id="pi"></p>
+    <p id="implicit"></p>
+    <script>
+        var randomNumber = Math.floor(Math.random() * 100) + 1; 
+        document.getElementById("random").innerHTML =
+        "Random Number: " + randomNumber;  //  Random number between 1 and 100
+
+        var text = "75";
+        document.getElementById("userScore").innerHTML =
+        "User Score (string): " + text; //  User score as string
+
+        var userScore = Number(text); 
+
+        var difference = randomNumber - userScore;
+        document.getElementById("diff").innerHTML =
+        "Difference: " + difference;  // Difference between random number and user score
+
+        var squareRoot = Math.round(Math.sqrt(userScore));
+        document.getElementById("sqrt").innerHTML =
+        "Rounded Square Root of User Score: " + squareRoot; //  Rounded square root of user score
+
+        document.getElementById("pi").innerHTML =
+        "Value of Pi: " + Math.PI;  //  Value of Pi
+
+        var result = "50" * 2;
+        document.getElementById("implicit").innerHTML =
+        "Implicit Conversion ('50' * 2): " + result;  // Implicit conversion of string to number
+        </script>
+</body>
+</html>
