@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Result </title>
+</head>
+<body>
+    <h2>Game Result Generator</h2>
+    <p id="result"></p>
+<script> 
+    var mysteryLevel = Math.floor(Math.random() * 50) + 1; // Random number between 1 and 50
+    var text = "45"; // User score as string
+    var userScore = Number(text); // Convert string to number
+    var difference = Math.abs(mysteryLevel - userScore); // Absolute difference
+    var squareRoot = Math.sqrt(userScore); // Square root of user score
+    var piValue = Math.PI; // Value of Pi
+    var implicitResult = "20" * 5; // Implicit conversion of string to number
+    var highest = Math.max(10, 20, mysteryLevel); // Highest value among 10, 20, and mysteryLevel
+    var lowest = Math.min(10, 20, mysteryLevel); // Lowest value among 10, 20, and mysteryLevel
+    document.getElementById("result").innerHTML = 
+        "Mystery Level: " + mysteryLevel + "<br>" +
+        "User Score (string): " + text + "<br>" +
+        "User Score (number): " + userScore + "<br>" +
+        "Absolute Difference: " + difference + "<br>" +
+        "Square Root of User Score: " + squareRoot + "<br>" +
+        "Value of Pi: " + piValue + "<br>" +
+        "Implicit Conversion ('20' * 5): " + implicitResult + "<br>" +
+        "Highest Value (10, 20, mysteryLevel): " + highest + "<br>" +
+        "Lowest Value (10, 20, mysteryLevel): " + lowest;
+</script>
+
+</body>
+</html>
