@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store Item Return</title>
+</head>
+<body>
+    <h1>Item Return</h1>
+    <p id="item"></p>
+    <button onclick="order.returnItem()">Item Return</button>
+<script>
+let order = {  // Object representing an order
+    itemName: "Frock",
+    isDelivered: true,
+    daysSinceDelivery: 5 ,
+ returnItem: function() { // Method to check return eligibility
+    var isDeliverd = this.isDelivered; 
+    var daysSinceDelivery = this.daysSinceDelivery; 
+    var returnable = (isDeliverd == true && daysSinceDelivery <= 7) ? "Eligible for Return" : "Return Period Expired";  // Ternary operator to determine return eligibility
+    document.getElementById("item").innerHTML =
+            "Item Name: " + this.itemName + "<br>" + returnable; // Display item name and return status
+    var hasItemName = ("itemName" in this);   // Check if itemName property exists
+    delete this.daysSinceDelivery; // Delete daysSinceDelivery property
+    console.log("daysSinceDelivery" in this); // Log whether daysSinceDelivery property exists
+    console.log(hasItemName); // Log whether itemName property exists
+    }
+};
+</script>
+</body>
+</html>
