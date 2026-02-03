@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Product List</title>
+</head>
+<body>
+    <h1>Online Grocery Store</h1>
+    <p id="result"></p>
+    <script>
+        let products = ["Tomato", "Potato", "Carrot", "Cabbage"];
+        let prices = [55, 30, 60, 70]; 
+
+        let result = document.getElementById("result");
+
+        let productList = products.map((product, index) =>
+            `Product: ${product} - Price: ${prices[index]}` // Extract product with price
+        );
+
+        result.innerHTML += "<h3>All Products</h3>";
+        productList.forEach(item => {           
+            result.innerHTML += `<p>${item}</p>`; // Display each product with its price
+        });  
+
+        result.innerHTML += "<h3>Products with Price > 50</h3>";
+        products
+            .filter((_, index) => prices[index] > 50) // Filter products with price > 50
+            .forEach((product, index) => {
+                result.innerHTML += `<p>Product: ${product} - Price: ${prices[index]}</p>`;
+            });
+ 
+        products.push("Watermelon");  // Add new product
+        prices.push(80); // Add price for new product
+
+        result.innerHTML += "<h3>Updated Product List</h3>"; // Display updated list
+        products.forEach((product, index) => {
+            result.innerHTML += `<p>Product: ${product} - Price: ${prices[index]}</p>`;
+        });
+    </script>
+</body>
+</html>
