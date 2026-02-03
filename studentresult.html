@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Result Dashboard</title>
+</head>
+<body>
+    <h1>Student Result Dashboard</h1>
+    <p id="result"></p>
+    <script>
+        let students = [
+            { name: "Evania", score: 76 },
+            { name: "Helen", score: 58 },
+            { name: "Aidan", score: 94 },
+            { name: "Johanna", score: 35 },
+            { name: "Anamika", score: 66 }
+        ];
+
+        let result = document.getElementById("result"); // Get the paragraph element to display results
+
+        let allNames = students.map(student => student.name); // Extract all student names
+        result.innerHTML += `<p><b>All Students:</b> ${allNames.join(", ")}</p>`;
+
+        let above60 = students
+            .filter(student => student.score > 60)
+            .map(student => student.name);       // Students with score > 60
+        result.innerHTML += `<p><b>Score > 60:</b> ${above60.join(", ")}</p>`;
+
+        let totalScore = students.reduce((sum, student) => sum + student.score, 0); // Total score of all students
+        result.innerHTML += `<p><b>Total Score:</b> ${totalScore}</p>`;
+
+        let allPassed = students.every(student => student.score > 35); // Check if all students passed
+        result.innerHTML += `<p><b>All Students Passed:</b> ${allPassed ? "Yes" : "No"}</p>`;
+
+        let hasTopper = students.some(student => student.score > 90); // Check if any student scored > 90
+        result.innerHTML += `<p><b>Any Student Scored > 90:</b> ${hasTopper ? "Yes" : "No"}</p>`;
+
+        let sortedStudents = [...students].sort((a, b) => b.score - a.score); // Sort students by score in descending order
+        let sortedOutput = sortedStudents
+            .map(student => `${student.name} (${student.score})`)
+            .join(", "); 
+        result.innerHTML += `<p><b>Sorted by Score (Descending):</b> ${sortedOutput}</p>`;
+     </script>
+</body>
+</html>
