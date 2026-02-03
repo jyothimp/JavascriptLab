@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Tracker</title>
+<style>
+    .center {
+        text-align: center;
+        font-family: Arial, sans-serif;
+        margin-top: 50px;
+        background-color: rgb(203, 193, 131);
+    }
+</style>
+</head>
+<body>
+
+<div class="center">
+    <h2>Birthday Tracker</h2>
+    <p id="output"></p>
+</div>
+<script>
+    
+    const friend = {    // Friend object with name and birth date
+      name: "Reena",
+      birthDate: "1997-09-12" // YYYY-MM-DD
+    };
+
+    function getBirthdayDetails(friend) {   // Function to get birthday details
+      const birthDateObj = new Date(friend.birthDate); // Convert birth date string to Date object
+      const today = new Date(); // Current date
+
+      const year = birthDateObj.getFullYear();  // Extract year
+      const day = birthDateObj.getDate();  // Extract day
+
+      const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December" 
+      ];  // Array of month names
+      const monthName = monthNames[birthDateObj.getMonth()]; // Get month name
+
+      let age = today.getFullYear() - year; // Calculate age
+
+      if (
+        today.getMonth() < birthDateObj.getMonth() ||     // Adjust age if birthday hasn't occurred yet this year
+        (today.getMonth() === birthDateObj.getMonth() && 
+         today.getDate() < birthDateObj.getDate())  
+      ) {
+        age--; 
+      }
+
+      return `${friend.name} was born on ${day} ${monthName}, ${year} and is ${age} years old.`;
+    }
+
+    document.getElementById("output").textContent =
+      getBirthdayDetails(friend);
+  </script>
+</body>
+</html>
