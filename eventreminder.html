@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Reminder</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 30px; 
+            background-color: #f9f9f9;
+            color: #333;
+        }
+    
+        fieldset { 
+            border: 2px solid #147363;
+            border-radius: 8px;
+            padding: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: white;
+        }
+    
+        legend {
+            font-weight: bold;
+            color: #7b08d2;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .input-group { 
+            margin-bottom: 15px;  
+        }
+
+        label { 
+            display: block; 
+            margin-bottom: 5px; 
+            font-size: 0.9rem; 
+        }
+
+        input[type="date"] { 
+            width: 100%; 
+            padding: 8px;
+            box-sizing: border-box; 
+        }
+
+        button { 
+            width: 100%; 
+            padding: 10px; 
+            background-color: #9f36eb; 
+            color: white; 
+            border: none; 
+            border-radius: 4px; 
+            cursor: pointer; 
+        }
+
+        button:hover {
+            background-color: #9800b3; 
+        }
+
+        #output { 
+            margin-top: 20px; 
+            line-height: 1.5; 
+        }
+    </style>
+</head>
+<body>
+
+<form onsubmit="event.preventDefault(); calculateEvent();"> 
+    <fieldset>
+        <legend>Event Reminder</legend> 
+
+        <div class="input-group">
+            <label for="dateInput">Select a past date:</label>
+            <input type="date" id="dateInput" required>
+        </div>
+
+        <button type="submit">Check Date</button>
+
+        <div id="output"></div>
+       
+    </fieldset>
+</form>
+
+<script>
+    function calculateEvent() {
+        const input = document.getElementById('dateInput').value;   //
+        if (!input) return;
+
+        const eventDate = new Date(input + "T00:00"); // Ensure time is set to midnight to avoid timezone issues
+        const today = new Date(); // Current date
+        
+        const year = eventDate.getFullYear(); // Extract year
+        const month = eventDate.toLocaleString('default', { month: 'long' }); // Extract month name
+        const day = eventDate.getDate(); // Extract day
+
+        let yearsPassed = today.getFullYear() - eventDate.getFullYear(); // Calculate difference in years
+        const monthDiff = today.getMonth() - eventDate.getMonth(); // Calculate month difference
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < eventDate.getDate())) {
+            yearsPassed--;
+        } // Adjust if the current date is before the event date in the current year
+
+        const message = yearsPassed >= 1  
+            ? "It has been more than a year since that date." 
+            : "It has been less than a year since that date.";  // Determine message based on years passed
+
+        document.getElementById('output').innerHTML = `
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
+            <p><strong>Date:</strong> ${month} ${day}, ${year}</p>
+            <p><strong>Years Passed:</strong> ${yearsPassed}</p>
+            <p><em>${message}</em></p>
+        `;
+    }
+</script>
+</body>
+</html>
