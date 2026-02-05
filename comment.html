@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment Filtering System</title>
+</head>
+<body>
+    <h1>Comment Filtering System</h1>
+    <p><b>Cleaned Comment:</b></p>
+    <p id="comment"></p>
+    <p><b>Number Count:</b> <span id="numbers"></span></p>
+    <p><b>Capitalized Word Count:</b> <span id="caps"></span></p>
+
+    <script>
+
+       function filterComment(comment) {
+          const bannedRegex = /\b(bad|ugly|stupid)\b/gi;   // Regex for banned words
+          const cleanedComment = comment.replace(bannedRegex, "***");  // Replace banned words with ***
+          const numberMatches = comment.match(/\d+/g);  // Find all numbers
+          const numberCount = numberMatches ? numberMatches.length : 0;  // Count of numbers
+          const capitalWordMatches = comment.match(/\b[A-Z][a-zA-Z]*\b/g);  // Find capitalized words
+          const capitalWordCount = capitalWordMatches ? capitalWordMatches.length : 0; // Count of capitalized words
+
+          return {
+             cleanedComment,
+             numberCount,
+             capitalWordCount
+        };
+    }
+
+         const testComment =
+            "I think this movie was BAD and 100% Stupid! But the Acting was Amazing and 3 actors were great.";
+
+         const result = filterComment(testComment);
+  
+        document.getElementById("comment").innerText = result.cleanedComment;
+        document.getElementById("numbers").innerText = result.numberCount;
+        document.getElementById("caps").innerText = result.capitalWordCount;
+    </script>
+</body>
+</html>
