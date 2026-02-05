@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>    
+</head>
+<body>
+    <h1>Grocery Store Calculator</h1>
+    <label>Product Code (1-Apple, 2-Banana, 3-Mango)</label><br>
+    <input type="number" id="code"><br><br>
+    <label>Quantity</label><br>
+    <input type="number" id="quantity"><br><br>
+    <button onclick="calculate()">Add Purchase</button>
+    <p id="result"></p>
+  <script>
+       let purchases = 0; // Counter for purchases
+       const maxPurchases = 5; // Maximum allowed purchases
+
+     function calculate() {
+        let output = document.getElementById("result"); 
+
+      if (purchases >= maxPurchases) {  // Check if maximum purchases reached
+        output.innerText = "5 purchases completed."; 
+        return;
+      }
+
+        let code = Number(document.getElementById("code").value); // Get product code
+        let quantity = Number(document.getElementById("quantity").value); // Get quantity
+
+        let price = 0; // Initialize price variable
+        let product = ""; // Initialize product variable
+        
+// Determine product and price based on code
+     switch (code) { 
+        case 1:
+            product = "Apple";
+            price = 30;
+            break;
+        case 2:
+            product = "Banana";
+            price = 10;
+            break;
+        case 3:
+            product = "Mango";
+            price = 50;
+            break;
+        default:
+            output.innerText = "Invalid product code";
+            return; 
+     }
+
+       let total = price * quantity;
+
+       output.innerText =
+          "Product: " + product + "\n" +
+          "Quantity: " + quantity + "\n" +
+          "Total Price: ₹" + total + "\n";
+
+      if (total > 100) {
+        output.innerText += "High purchase";
+      } else {
+        output.innerText += "Normal purchase";
+      }
+
+       purchases++;
+
+      if (purchases === maxPurchases) {
+        output.innerText += "\n\nAll purchases completed.";
+      }
+}
+    </script>
+    
+</body>
+</html>
