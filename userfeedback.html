@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Feedback</title>
+</head>
+<body>
+    <script>
+         const jsonString = `{  
+            "name": "Jyothi",
+            "message": "Thank you for the great service!"
+            }`;
+
+        try {
+            const feedback = JSON.parse(jsonString); // Parse the JSON string
+            const checkThank = (text) => { // Function to check if the message contains "thank" (case-insensitive)
+                return /thank/i.test(text); // Regular expression to check for "thank" in the message
+            };
+
+            if (checkThank(feedback.message)) { 
+                console.log("Positive feedback received");
+            } else {
+                console.log("Feedback noted");
+            }
+            } 
+            catch (error) {
+            console.error("Invalid JSON provided:", error.message);
+            }
+    </script>
+</body>
+</html>
