@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information</title>
+</head>
+<body>
+   <script>
+        const jsonText = `{
+        "name": "Evania",
+        "email": "Evaniavipinm@gmail.com",
+        "message": "Hello, I have a question about your product delivery."
+        }`;
+
+        const processUserMessage = () => {
+        try {
+            const userData = JSON.parse(jsonText);
+            console.log(`Message received from ${userData.name}`);
+        } catch (error) {
+            console.error("Error processing user message:", error.message);
+        }
+        };
+    processUserMessage();
+   </script> 
+</body>
+</html>
