@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Info</title>
+</head>
+<body>
+    <h1>Books Info</h1>
+    <script>
+        class Book {
+            constructor(title, author, price) {
+                this.title = title;
+                this.author = author;
+                this.price = price;
+            }
+
+            getTitle() {
+                return this.title;
+            }
+
+            getAuthor() {
+                return this.author;
+            }
+
+            setPrice(newPrice) {
+                if (typeof newPrice === "number" && newPrice > 0) {
+                this.price = newPrice;
+                console.log("Price updated successfully.");
+                } else {
+                console.log("Invalid price. Update failed.");
+                }
+            }
+
+            getBookDetails() {
+                return {
+                title: this.title,
+                author: this.author,
+                price: this.price
+                };
+            }
+        }
+
+        const book1 = new Book("Alice in Wonderland", "Lewis Carroll", 20);
+        book1.setPrice(-10);
+        book1.setPrice("free");
+        book1.setPrice(25);
+        console.log("Title:", book1.getTitle());
+        console.log("Author:", book1.getAuthor());
+        console.log("Price:", book1.getBookDetails().price);
+    </script>
+</body>
+</html>
