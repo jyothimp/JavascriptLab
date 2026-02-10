@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      background: white;
+      padding: 20px 30px;
+      width: 350px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin-top: 5px
+    }
+
+    button {
+      background-color: #0841fc;
+      color: white;
+      border-radius: 5px;
+      margin: 15px auto 0; /* centers the button */
+      width: 70%;
+      display: block;   
+    }
+  </style>
+</head>
+<body>
+    <div class="card">
+    <h1>User Feedback Form</h1>
+
+    <form id="feedbackForm">
+      <label>
+        Name:
+        <input type="text" id="name" required>
+      </label>
+      <br><br>
+      <label>
+        Feedback:
+        <textarea id="feedback" rows="4" required></textarea>
+      </label>
+      <br><br>
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="confirmation" hidden>Thanks for your feedback!</p>
+
+    <div id="feedbackDisplay"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById("feedbackForm");
+    const confirmation = document.getElementById("confirmation");
+    const feedbackDisplay = document.getElementById("feedbackDisplay");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const feedback = document.getElementById("feedback").value;
+
+      feedbackDisplay.innerHTML =
+        "<p>Name: " + name + "</p>" +
+        "<p>Feedback: " + feedback + "</p>";
+
+      confirmation.hidden = false;
+
+      setTimeout(function () {
+        confirmation.hidden = true;
+      }, 5000);
+
+      form.reset();
+    });
+
+    feedbackDisplay.addEventListener("mouseover", function () {
+      feedbackDisplay.style.color = "blue";
+    });
+
+    feedbackDisplay.addEventListener("mouseout", function () {
+      feedbackDisplay.style.color = "black";
+    });
+  </script>
+</body>
+</html>
